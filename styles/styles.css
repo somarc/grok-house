@@ -331,11 +331,37 @@ main > .section:first-of-type {
   padding-top: 0;
 }
 
+main blockquote {
+  margin: 1.5em 0;
+  padding: 0.15em 0 0.15em 1.15em;
+  border-inline-start: 2px solid var(--color-brass);
+  color: var(--color-bone);
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
 main > .section > div > p,
 main > .section > div > ul,
 main > .section > div > ol {
   max-width: 42rem;
   color: var(--color-mist);
+}
+
+main > .section > div > blockquote {
+  max-width: 42rem;
+}
+
+main cite {
+  display: block;
+  margin-top: 0.4em;
+  color: var(--color-mist);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-style: normal;
+  letter-spacing: 0.04em;
 }
 
 @media (width >= 900px) {
