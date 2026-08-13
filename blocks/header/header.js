@@ -169,6 +169,16 @@ export default async function decorate(block) {
         }
       });
     });
+    const here = window.location.pathname.replace(/\/+$/, '') || '/';
+    navSections.querySelectorAll('a[href]').forEach((link) => {
+      let path;
+      try {
+        path = new URL(link.href, window.location.href).pathname.replace(/\/+$/, '') || '/';
+      } catch {
+        return;
+      }
+      if (path === here) link.setAttribute('aria-current', 'page');
+    });
   }
 
   // hamburger for mobile

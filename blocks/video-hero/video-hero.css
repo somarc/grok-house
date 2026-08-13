@@ -152,6 +152,18 @@
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .video-hero.has-poster:not(.has-video) .video-hero-poster img {
+    animation: hero-drift 32s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+}
+
+@keyframes hero-drift {
+  from { transform: scale(1.04); }
+  to { transform: scale(1.1) translate3d(-1.2%, -0.8%, 0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .video-hero video {
     display: none;

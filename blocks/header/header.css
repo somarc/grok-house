@@ -178,6 +178,10 @@ header nav .nav-sections ul > li {
   font-weight: 500;
 }
 
+header nav .nav-sections a[aria-current='page'] {
+  color: var(--color-brass);
+}
+
 header nav .nav-sections ul > li > ul {
   margin-top: 0;
 }
