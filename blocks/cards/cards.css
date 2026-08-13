@@ -8,8 +8,19 @@
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  background-color: var(--color-dome);
+}
+
+.cards .cards-card-body h3,
+.cards .cards-card-body h2 {
+  margin-top: 0;
+  color: var(--color-bone);
+}
+
+.cards .cards-card-body p {
+  color: var(--color-mist);
 }
 
 .cards .cards-card-body {
