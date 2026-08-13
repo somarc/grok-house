@@ -11,17 +11,27 @@
  */
 
 :root {
+  /* observatory tokens */
+  --color-void: #07080b;
+  --color-dome: #141820;
+  --color-brass: #c4a05a;
+  --color-ember: #d4783a;
+  --color-bone: #e8e0d2;
+  --color-mist: #9a9388;
+  --color-metal: #7d8a8e;
+  --color-line: rgb(196 160 90 / 22%);
+
   /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --background-color: var(--color-void);
+  --light-color: var(--color-dome);
+  --dark-color: #2a241c;
+  --text-color: var(--color-bone);
+  --link-color: var(--color-brass);
+  --link-hover-color: #e4c37a;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: "Avenir Next", "Segoe UI", roboto, roboto-fallback, system-ui, sans-serif;
+  --heading-font-family: "Iowan Old Style", "Palatino Linotype", palatino, georgia, "times new roman", serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -70,6 +80,10 @@
   }
 }
 
+html {
+  background-color: var(--background-color);
+}
+
 body {
   display: none;
   margin: 0;
@@ -106,9 +120,11 @@ h5,
 h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
+  color: var(--color-bone);
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   scroll-margin: 40px;
 }
 
@@ -176,14 +192,17 @@ button.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
   max-width: 100%;
   margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border: 1px solid var(--color-brass);
+  border-radius: 999px;
+  padding: 0.65em 1.35em;
   font: inherit;
+  font-size: var(--body-font-size-s);
   font-weight: 500;
   line-height: 1.25;
+  letter-spacing: 0.02em;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
@@ -199,18 +218,18 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  border-color: var(--color-brass);
+  background-color: var(--color-brass);
+  color: var(--color-void);
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  border-color: var(--link-hover-color);
+  background-color: var(--link-hover-color);
+  color: var(--color-void);
 }
 
 a.button.primary[aria-disabled="true"],
@@ -226,18 +245,18 @@ button.button.primary:disabled:focus-visible {
 
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--text-color);
-  background-color: transparent;
-  color: var(--text-color);
+  border-color: var(--color-line);
+  background-color: rgb(7 8 11 / 35%);
+  color: var(--color-bone);
 }
 
 a.button.secondary:hover,
 a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
+  border-color: var(--color-brass);
+  background-color: rgb(196 160 90 / 12%);
+  color: var(--color-bone);
 }
 
 a.button.secondary[aria-disabled="true"],
@@ -254,17 +273,17 @@ button.button.secondary:disabled:focus-visible {
 /* high-impact call-to-action */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+  border-color: var(--color-ember);
+  background-color: var(--color-ember);
+  color: var(--color-void);
 }
 
 a.button.accent:hover,
 a.button.accent:focus-visible,
 button.button.accent:hover,
 button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+  border-color: #e89255;
+  background-color: #e89255;
 }
 
 a.button.accent[aria-disabled="true"],
@@ -297,17 +316,52 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: 0;
+  padding: clamp(3rem, 8vw, 5.5rem) 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: 72rem;
   margin: auto;
   padding: 0 24px;
 }
 
 main > .section:first-of-type {
   margin-top: 0;
+  padding-top: 0;
+}
+
+main blockquote {
+  margin: 1.5em 0;
+  padding: 0.15em 0 0.15em 1.15em;
+  border-inline-start: 2px solid var(--color-brass);
+  color: var(--color-bone);
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+main > .section > div > p,
+main > .section > div > ul,
+main > .section > div > ol {
+  max-width: 42rem;
+  color: var(--color-mist);
+}
+
+main > .section > div > blockquote {
+  max-width: 42rem;
+}
+
+main cite {
+  display: block;
+  margin-top: 0.4em;
+  color: var(--color-mist);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-style: normal;
+  letter-spacing: 0.04em;
 }
 
 @media (width >= 900px) {
@@ -317,9 +371,43 @@ main > .section:first-of-type {
 }
 
 /* section metadata */
+main .section.hero-stage {
+  padding: 0;
+}
+
+main .section.hero-stage > div {
+  max-width: unset;
+  padding: 0;
+}
+
 main .section.light,
-main .section.highlight {
+main .section.highlight,
+main .section.dome {
   background-color: var(--light-color);
   margin: 0;
-  padding: 40px 0;
+}
+
+main .section.narrow > div {
+  max-width: 44rem;
+}
+
+main .section.wide > div {
+  max-width: 80rem;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 3px;
+}
+
+@media (prefers-contrast: more) {
+  a:any-link {
+    text-decoration: underline;
+  }
+
+  a.button:any-link,
+  button.button {
+    border-width: 2px;
+  }
 }

@@ -137,6 +137,26 @@ export default async function decorate(block) {
     brandLink.closest('.button-container').className = '';
   }
 
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    const searchLink = navTools.querySelector('a[href]');
+    const icon = navTools.querySelector('.icon-search, span.icon');
+    if (icon && !searchLink) {
+      const a = document.createElement('a');
+      a.href = '/search';
+      a.setAttribute('aria-label', 'Search published pages');
+      icon.replaceWith(a);
+      a.append(icon);
+    } else if (searchLink) {
+      if (!searchLink.getAttribute('href') || searchLink.getAttribute('href') === '#') {
+        searchLink.href = '/search';
+      }
+      if (!searchLink.getAttribute('aria-label')) {
+        searchLink.setAttribute('aria-label', 'Search published pages');
+      }
+    }
+  }
+
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
@@ -148,6 +168,16 @@ export default async function decorate(block) {
           navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
         }
       });
+    });
+    const here = window.location.pathname.replace(/\/+$/, '') || '/';
+    navSections.querySelectorAll('a[href]').forEach((link) => {
+      let path;
+      try {
+        path = new URL(link.href, window.location.href).pathname.replace(/\/+$/, '') || '/';
+      } catch {
+        return;
+      }
+      if (path === here) link.setAttribute('aria-current', 'page');
     });
   }
 

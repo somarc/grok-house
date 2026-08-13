@@ -1,5 +1,7 @@
 footer {
-  background-color: var(--light-color);
+  background-color: var(--color-void);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-mist);
   font-size: var(--body-font-size-xs);
 }
 
