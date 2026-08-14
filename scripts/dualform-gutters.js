@@ -100,6 +100,8 @@ function armPointer(gutters) {
 export default async function initDualformGutters() {
   if (window.matchMedia('(width < 1100px)').matches) return;
   if (document.querySelector('.df-gutter')) return;
+  // Film hero owns the first viewport. Gutters wait until Dualform is the house.
+  if (document.querySelector('.video-hero')) return;
   const { loadCSS } = await import(`${window.hlx.codeBasePath}/scripts/aem.js`);
   await loadCSS(`${window.hlx.codeBasePath}/styles/dualform-gutters.css`);
   armPointer([buildGutter('left'), buildGutter('right')]);
