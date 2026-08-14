@@ -381,6 +381,43 @@ main .section.hero-stage > div {
   padding: 0;
 }
 
+/* Object-owns-viewport — house weather. Blocks inherit. */
+main .section.object-stage {
+  --field: oklch(7.4% 0.012 250deg);
+  --ink: oklch(94.2% 0.012 95deg);
+  --mute: oklch(72% 0.018 95deg);
+  --material: oklch(82% 0.09 75deg);
+  --type-display: clamp(2.35rem, 1.1rem + 5.2vw, 4.75rem);
+
+  margin: 0;
+  padding: 0;
+  background: var(--field);
+  color: var(--ink);
+}
+
+main .section.object-stage > div {
+  max-width: none;
+  padding: 0;
+}
+
+main .section.object-field {
+  --field: oklch(7.4% 0.012 250deg);
+  --ink: oklch(94.2% 0.012 95deg);
+  --mute: oklch(72% 0.018 95deg);
+  --material: oklch(82% 0.09 75deg);
+
+  background: var(--field);
+  color: var(--ink);
+}
+
+main .section.object-field > div > :is(h2, h3) {
+  color: var(--ink);
+}
+
+main .section.object-field > div > p {
+  color: var(--mute);
+}
+
 main .section.light,
 main .section.highlight,
 main .section.dome {
@@ -440,6 +477,16 @@ main .section.doors li a {
     grid-template-columns: 1fr;
     gap: 0.25rem;
   }
+}
+
+main .section.object-field a:any-link {
+  color: var(--ink);
+  box-shadow: inset 0 -1px 0 var(--material);
+}
+
+main .section.object-field a:hover,
+main .section.object-field a:focus-visible {
+  color: var(--material);
 }
 
 @media (prefers-contrast: more) {
