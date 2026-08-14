@@ -400,6 +400,30 @@ main .section.object-stage > div {
   padding: 0;
 }
 
+/* Raise — runway. Section owns the scroll. Block sticks. */
+main .section.raise-stage {
+  --field: oklch(7.4% 0.012 250deg);
+  --ink: oklch(94.2% 0.012 95deg);
+  --mute: oklch(72% 0.018 95deg);
+  --material: oklch(82% 0.09 75deg);
+  --type-display: clamp(2.35rem, 1.1rem + 5.2vw, 4.75rem);
+
+  margin: 0;
+  padding: 0;
+  min-height: 220svh;
+  background: var(--field);
+  color: var(--ink);
+  view-timeline-name: --raise;
+  view-timeline-axis: block;
+  timeline-scope: --raise;
+}
+
+main .section.raise-stage > div {
+  max-width: none;
+  min-height: 220svh;
+  padding: 0;
+}
+
 main .section.object-field {
   --field: oklch(7.4% 0.012 250deg);
   --ink: oklch(94.2% 0.012 95deg);

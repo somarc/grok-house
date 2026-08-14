@@ -1,0 +1,181 @@
+/* Raise — one chassis. Cube rises through Starship. Scroll is the verb. */
+
+.raise {
+  --raise-field: var(--field, var(--color-void, #000));
+  --raise-ink: var(--ink, var(--color-ink, #eef1f4));
+  --raise-mute: var(--mute, var(--color-mute, #8b939c));
+  --raise-material: var(--material, var(--color-steel, #b7c2cc));
+  --raise-display: var(--type-display, var(--heading-font-size-xxl, 2.5rem));
+
+  box-sizing: border-box;
+  position: sticky;
+  top: var(--nav-height, 64px);
+  overflow: hidden;
+  height: calc(100svh - var(--nav-height, 64px));
+  background: var(--raise-field);
+  color: var(--raise-ink);
+}
+
+.raise-stage {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.raise-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.raise-a {
+  z-index: 1;
+}
+
+.raise-b {
+  z-index: 2;
+}
+
+.raise-layer picture,
+.raise-layer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+.raise-caption {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  align-content: end;
+  box-sizing: border-box;
+  height: 100%;
+  padding:
+    clamp(3rem, 10vh, 6rem)
+    clamp(1.25rem, 5vw, 4.5rem)
+    clamp(2.25rem, 7vh, 4rem);
+  background: linear-gradient(
+    to top,
+    color-mix(in oklch, var(--raise-field) 88%, transparent) 0%,
+    color-mix(in oklch, var(--raise-field) 24%, transparent) 46%,
+    transparent 74%
+  );
+}
+
+.raise-voice {
+  grid-area: 1 / 1;
+  max-width: 24rem;
+}
+
+.raise-eyebrow {
+  margin: 0 0 0.85em;
+  color: var(--raise-material);
+  font-family: var(--label-font-family, ui-monospace, menlo, monospace);
+  font-size: var(--body-font-size-xs, 0.85rem);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.raise-caption :is(h1, h2) {
+  max-width: 11ch;
+  margin: 0 0 0.35em;
+  color: var(--raise-ink);
+  font-family: var(--heading-font-family);
+  font-size: var(--raise-display);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.raise-lede {
+  max-width: 28rem;
+  margin: 0 0 0.85em;
+  color: var(--raise-mute);
+  font-size: var(--body-font-size-s, 1rem);
+  line-height: 1.5;
+}
+
+.raise-caption a:any-link {
+  color: var(--raise-ink);
+  text-decoration: none;
+  box-shadow: inset 0 -1px 0 var(--raise-material);
+}
+
+.raise-caption a:hover,
+.raise-caption a:focus-visible {
+  color: var(--raise-material);
+}
+
+.raise-caption p.button-wrapper a.button:any-link {
+  border-color: var(--raise-material);
+  background: transparent;
+  color: var(--raise-ink);
+  box-shadow: none;
+}
+
+.raise-caption p.button-wrapper a.button:hover,
+.raise-caption p.button-wrapper a.button:focus-visible {
+  border-color: var(--raise-ink);
+  background: var(--raise-ink);
+  color: var(--raise-field);
+}
+
+/* The raise: B grows up through A. Document scroll. Not a pointer hole. */
+@media (prefers-reduced-motion: no-preference) {
+  .raise:not(.raise-still) .raise-b {
+    clip-path: inset(100% 0 0 0);
+    animation: raise-through linear both;
+    animation-timeline: --raise;
+    animation-range: contain 8% contain 78%;
+  }
+
+  .raise:not(.raise-still) .raise-to {
+    opacity: 0;
+    animation: raise-voice-in linear both;
+    animation-timeline: --raise;
+    animation-range: contain 28% contain 78%;
+  }
+
+  .raise:not(.raise-still) .raise-from {
+    animation: raise-voice-out linear both;
+    animation-timeline: --raise;
+    animation-range: contain 28% contain 78%;
+  }
+}
+
+@keyframes raise-through {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes raise-voice-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes raise-voice-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .raise:not(.raise-still) .raise-to {
+    margin-block-start: 1.5rem;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .raise-caption {
+    background: color-mix(in oklch, var(--raise-field) 80%, transparent);
+  }
+
+  .raise-caption a:any-link {
+    text-decoration: underline;
+    box-shadow: none;
+  }
+}
