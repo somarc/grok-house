@@ -1,0 +1,85 @@
+/* House-wide Dualform gutters — delayed, void field */
+
+.df-gutter {
+  --df-mx: 42%;
+  --df-my: 42%;
+  --df-rx: 62%;
+  --df-ry: 52%;
+  --df-soft: 0.62;
+
+  position: fixed;
+  top: var(--nav-height, 64px);
+  bottom: 0;
+  z-index: 0;
+  width: min(28vw, 240px);
+  height: calc(100dvh - var(--nav-height, 64px));
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.38;
+}
+
+.df-gutter-left {
+  left: 0;
+}
+
+.df-gutter-right {
+  right: 0;
+}
+
+.df-gutter-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.df-gutter-left .df-gutter-inner {
+  /* stylelint-disable property-no-vendor-prefix */
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 35%, transparent 92%);
+  /* stylelint-enable property-no-vendor-prefix */
+  mask-image: linear-gradient(to right, #000 0%, #000 35%, transparent 92%);
+}
+
+.df-gutter-right .df-gutter-inner {
+  transform: scaleX(-1);
+  /* stylelint-disable property-no-vendor-prefix */
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 35%, transparent 92%);
+  /* stylelint-enable property-no-vendor-prefix */
+  mask-image: linear-gradient(to right, #000 0%, #000 35%, transparent 92%);
+}
+
+.df-gutter-layer {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
+}
+
+.df-gutter-a {
+  background-image: url('/media/dualform/form-a.webp');
+}
+
+.df-gutter-b {
+  background-image: url('/media/dualform/form-b.webp');
+  /* stylelint-disable property-no-vendor-prefix */
+  -webkit-mask-image: radial-gradient(
+    ellipse var(--df-rx, 48%) var(--df-ry, 40%) at var(--df-mx, 52%) var(--df-my, 48%),
+    #000 0%,
+    #000 40%,
+    transparent 78%
+  );
+  /* stylelint-enable property-no-vendor-prefix */
+  mask-image: radial-gradient(
+    ellipse var(--df-rx, 48%) var(--df-ry, 40%) at var(--df-mx, 52%) var(--df-my, 48%),
+    #000 0%,
+    #000 40%,
+    transparent 78%
+  );
+}
+
+.df-gutter.is-static .df-gutter-b {
+  /* stylelint-disable property-no-vendor-prefix */
+  -webkit-mask-image: radial-gradient(ellipse 52% 44% at 50% 42%, #000 0%, #000 36%, transparent 72%);
+  /* stylelint-enable property-no-vendor-prefix */
+  mask-image: radial-gradient(ellipse 52% 44% at 50% 42%, #000 0%, #000 36%, transparent 72%);
+}
