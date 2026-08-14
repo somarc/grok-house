@@ -1,4 +1,4 @@
-/* Dualform hero — void field, ion signal, morphing pointer hole */
+/* Dualform hero — full first screen. One object. No product-shot cage. */
 
 .dualform-hero {
   --df-void: var(--color-void, #000);
@@ -12,77 +12,85 @@
   --df-soft: 0.55;
   --df-angle: -12deg;
 
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100svh - var(--nav-height, 64px));
   margin: 0;
   padding: 0;
-  background: transparent;
+  background: var(--df-void);
 }
 
 .dualform-hero .df-inner {
-  display: grid;
-  gap: 40px;
-  align-items: center;
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 48px 24px 56px;
-}
-
-@media (width >= 900px) {
-  .dualform-hero .df-inner {
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 440px);
-    gap: 48px 64px;
-    padding: 72px 32px 80px;
-  }
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  min-height: calc(100svh - var(--nav-height, 64px));
+  max-width: none;
+  margin: 0;
+  padding: clamp(3.25rem, 8vh, 5rem) clamp(1.25rem, 5vw, 4.5rem) clamp(2.75rem, 8vh, 4.5rem);
 }
 
 .dualform-hero .df-copy {
+  position: relative;
+  z-index: 3;
+  max-width: 36rem;
   color: var(--df-ink);
 }
 
 .dualform-hero .df-eyebrow {
-  margin: 0 0 0.85em;
+  margin: 0 0 0.7em;
   font-family: var(--label-font-family, ui-monospace, menlo, monospace);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: var(--body-font-size-xs, 14px);
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--df-signal);
 }
 
 .dualform-hero .df-copy h1 {
-  margin: 0 0 0.45em;
+  max-width: 14ch;
+  margin: 0 0 0.35em;
   font-family: var(--heading-font-family, futura, "century gothic", sans-serif);
-  font-size: var(--heading-font-size-xxl, clamp(40px, 7vw, 58px));
+  font-size: clamp(2.05rem, 8.5vw, 2.55rem);
   font-weight: 500;
-  line-height: 1.06;
+  line-height: 0.96;
   letter-spacing: -0.03em;
   color: var(--df-ink);
-  max-width: 12ch;
 }
 
 .dualform-hero .df-lede {
-  margin: 0.85em 0 0;
-  max-width: 38ch;
-  font-size: var(--body-font-size-m, 19px);
-  line-height: 1.6;
+  max-width: 34rem;
+  margin: 0 0 0.7em;
+  font-size: var(--body-font-size-s, 1rem);
+  line-height: 1.55;
   color: var(--df-ink-soft);
 }
 
 .dualform-hero .df-stage {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  margin: 0 auto;
-  aspect-ratio: 3 / 4;
-  background: var(--df-void);
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 0 28%;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  aspect-ratio: auto;
+  background: transparent;
   overflow: hidden;
   touch-action: pan-y;
   cursor: crosshair;
   user-select: none;
 }
 
-@media (width >= 900px) {
+@media (width < 900px) {
   .dualform-hero .df-stage {
-    margin: 0 0 0 auto;
+    inset: 0;
+    opacity: 0.55;
+  }
+
+  .dualform-hero .df-copy {
+    text-shadow: 0 2px 24px rgb(0 0 0 / 80%);
   }
 }
 
@@ -90,7 +98,7 @@
   position: absolute;
   inset: 0;
   display: grid;
-  place-items: center;
+  place-items: center end;
 }
 
 .dualform-hero .df-a {
@@ -102,7 +110,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center;
+  object-position: 88% 60%;
 }
 
 .dualform-hero .df-b {
