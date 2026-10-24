@@ -73,7 +73,7 @@
 .video-hero h1 {
   max-width: 14ch;
   margin: 0 0 0.35em;
-  color: var(--color-bone);
+  color: var(--color-ink);
   font-family: var(--heading-font-family);
   font-size: clamp(2.05rem, 8.5vw, 2.55rem);
   font-weight: 500;
@@ -86,7 +86,7 @@
 .video-hero h2,
 .video-hero h3 {
   margin: 0 0 0.7em;
-  color: var(--color-brass);
+  color: var(--color-ion);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-xs);
   font-weight: 500;
@@ -97,7 +97,7 @@
 .video-hero p {
   max-width: 34rem;
   margin: 0 0 0.7em;
-  color: var(--color-mist);
+  color: var(--color-mute);
   font-size: var(--body-font-size-s);
   line-height: 1.5;
   text-shadow: 0 1px 10px rgb(0 0 0 / 70%);

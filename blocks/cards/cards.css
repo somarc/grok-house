@@ -22,17 +22,17 @@
 .cards > ul > li {
   overflow: hidden;
   border: 1px solid var(--color-line);
-  background-color: var(--color-dome);
+  background-color: var(--color-well);
 }
 
 .cards .cards-card-body h3,
 .cards .cards-card-body h2 {
   margin-top: 0;
-  color: var(--color-bone);
+  color: var(--color-ink);
 }
 
 .cards .cards-card-body p {
-  color: var(--color-mist);
+  color: var(--color-mute);
 }
 
 .cards .cards-card-body {

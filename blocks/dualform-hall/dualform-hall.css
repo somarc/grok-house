@@ -1,0 +1,97 @@
+/* Dualform hall — helmet-hall remaps of one silhouette */
+
+.dualform-hall {
+  --dfh-void: var(--color-void, #000);
+  --dfh-ink: var(--color-ink, #eef1f4);
+  --dfh-mute: var(--color-mute, #8b939c);
+  --dfh-signal: var(--color-ion, #4f8cff);
+}
+
+.dualform-hall .dfh-list {
+  display: grid;
+  gap: 2.5rem 1.5rem;
+  margin: 0 auto;
+  max-width: 72rem;
+}
+
+@media (width >= 900px) {
+  .dualform-hall .dfh-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.dualform-hall .dfh-item {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.dualform-hall .dfh-copy {
+  color: var(--dfh-ink);
+}
+
+.dualform-hall .dfh-label {
+  margin: 0 0 0.4em;
+  font-family: var(--label-font-family, ui-monospace, menlo, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dfh-signal);
+}
+
+.dualform-hall .dfh-copy h2,
+.dualform-hall .dfh-copy h3 {
+  margin: 0 0 0.35em;
+  font-size: var(--heading-font-size-s, 1.25rem);
+}
+
+.dualform-hall .dfh-copy p:not(.dfh-label) {
+  margin: 0;
+  max-width: 32ch;
+  color: var(--dfh-mute);
+  font-size: var(--body-font-size-s, 1rem);
+}
+
+.dualform-hall .dfh-stage {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--dfh-void);
+}
+
+.dualform-hall .dfh-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.dualform-hall .dfh-a {
+  z-index: 1;
+}
+
+.dualform-hall .dfh-b {
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.dualform-hall .dfh-item:hover .dfh-b,
+.dualform-hall .dfh-item:focus-within .dfh-b {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dualform-hall .dfh-b {
+    opacity: 0.55;
+    transition: none;
+  }
+}
+
+.dualform-hall .dfh-layer picture,
+.dualform-hall .dfh-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

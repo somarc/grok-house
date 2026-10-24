@@ -1,0 +1,62 @@
+/* World split — three worlds, not a card grid of stills */
+
+.world-split .ws-list {
+  display: grid;
+  gap: 0;
+  margin: 0 auto;
+  max-width: 72rem;
+  border-block: 1px solid var(--color-line);
+}
+
+@media (width >= 900px) {
+  .world-split .ws-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.world-split .ws-world {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 1.75rem 0;
+  border-block-end: 1px solid var(--color-line);
+}
+
+@media (width >= 900px) {
+  .world-split .ws-world {
+    padding: 2rem 1.5rem 2.25rem;
+    border-block-end: 0;
+    border-inline-end: 1px solid var(--color-line);
+  }
+
+  .world-split .ws-world:first-child {
+    padding-inline-start: 0;
+  }
+
+  .world-split .ws-world:last-child {
+    padding-inline-end: 0;
+    border-inline-end: 0;
+  }
+}
+
+.world-split .ws-name {
+  margin: 0;
+  font-size: var(--heading-font-size-l, 1.75rem);
+  letter-spacing: -0.03em;
+}
+
+.world-split .ws-world p {
+  margin: 0;
+  max-width: 28ch;
+  color: var(--color-mute);
+}
+
+.world-split .ws-door {
+  margin-top: 0.75rem;
+}
+
+.world-split .ws-door a {
+  font-family: var(--heading-font-family);
+  letter-spacing: -0.02em;
+}

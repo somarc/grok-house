@@ -205,7 +205,9 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   import('./consent-check.js');
-  // load anything that can be postponed to the latest here
+  import('./dualform-gutters.js').then((mod) => {
+    if (typeof mod.default === 'function') mod.default();
+  });
 }
 
 async function loadPage() {
